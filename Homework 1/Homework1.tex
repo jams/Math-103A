@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{amsthm, amssymb, amsmath,verbatim}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{graphicx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand*{\field}[1]{\mathbb{#1}}%
+
+
+
+\newtheorem*{claim}{Claim}
+\newtheorem{ques}{Question}
+
+
+\title{Math 103A Homework 1}
+\date{Winter 2019}
+\author{James Holden}
+
+\begin{document}
+
+\maketitle
+
+\begin{ques}
+	Read sections 0 and 1 in the book.
+\end{ques}
+
+\begin{ques} 
+	Let ${F^x}_5$ denote $\{1, 2, 3, 4\}$ together with the multiplication mod 5. Show that ${F^x}_5$ is a group whose identity element is 1.
+\begin{proof}
+	To show that a (set, binary operation) pair is a group, it is sufficient to show that:
+	\begin{enumerate}[(i)]
+		\item
+		an identity element: $\exists e \in {F^x}_5 \text{ such that } \forall a \in {F^x}_5 : a * e = e * a = a$
+		\item 
+		inverses exist for every element of the group: $\forall a \in {F^x}_5 :  \exists a^{-1}  \text{ such that } a * a^{-1} = a^{-1} * a  = e$
+		\item
+		group operation is closed: $\forall a, b \in {F^x}_5 : a * b \in {F^x}_5$
+		\item 
+		associativity:  $\forall a,b,c \in {F^x}_5 : a * (b * c) = (a * b ) * c$.
+	\end{enumerate}
+	
+	Showing these properties exist: 
+	
+	\begin{enumerate}[(i)]
+		\item
+		an identity element: $\forall a \in {F^x}_5 : e = 1 \text{ and } \forall a \in {F^x}_5, a * 1 = a \times 1 \text{ (mod 5)} = a$.
+		\item 
+		inverses exist for every element of the group: Since this group is only 4 elements, the pairs of inverses are $(2, 3) \text{, } (1, 1) \text{, and } (4, 4)$. If you multiply the elements of each of the pairs together and mod 5, you get 1, the identity. 
+		\item
+		group operation is closed: $\forall a, b \in {F^x}_5 : a * b = a \times b \text{ (mod 5) } \in {F^x}_5$
+		\item 
+		associativity:  $\forall a,b,c \in {F^x}_5 : a * (b * c) = (a * b ) * c$ holds because $(b * c) \in {F^x}_5$ and $(a * b) \in {F^x}_5$.
+	\end{enumerate}
+
+	Therefore, ${F^x}_5$ is a group whose identity = 1.
+	 
+\end{proof}
+\end{ques}
+
+\begin{ques} 
+	Recall that $\field{Z}_4$ denotes $\{0, 1, 2, 3\}$ together with addition mod 4. Show that ${F^x}_5$ and $\field{Z}_4$ are isomorphic to each other.
+\begin{proof}
+
+	For two groups to be isomorphic to each other, they have to (1) be homomorphic to each other (2) have a bijective function. Let us denote $G =  (\field{Z}_4, +_4)$ and let $G' = ({F^x}_5, *_5)$.
+		
+	Consider the function $\phi(x) = x + 1$. $\phi$ is a map from $G \rightarrow G'$. If $\phi(ab) = \phi(a)\phi(b)$ is true, $\phi$ is a homomorphism by the homomorphism property.
+	
+	This means that if $\forall a,b \in G$ and $\phi(a), \phi(b) \in G'$, we have $\phi(a*b)$ = $\phi(a) * \phi(b)$ where the group operation between $a,b$ is the group operation of $G$ and the group operation between $\phi(a), \phi(b)$ is the group operation of $G'$.
+	
+	For example: let $a = 2$ and $b = 3$. This means $\phi(a*b) = \phi(2 +_5 3) = \phi(1) = 2$.
+	
+	Likewise: $\phi(2) * \phi(3) = 3 * 4 = 3 \times_5 4 = 12 \text{ mod 5 } = 2$.
+	
+	It is also easy to see these two groups are bijective by $\phi$. We have $\forall a \in G$, there is a corresponding $b \in  G'$.
+
+	Hence $\phi : \field{Z}_4 \cong {F^x}_5$.  
+\end{proof}
+\end{ques}
+
+\begin{ques} 
+	Show that exp : $(\field{R}, +)$ is isomorphic to $((0, \infty), *)$. (You may use without a proof properties of the exponential map from calculus.)
+\begin{proof}
+	Once again to show isomorphism, the function needs to satisfy (1) homorphism (2) bijection. Let $G = (\field{R}, +)$ and let $G' = ((0, \infty), *)$. Let $a,b \in G$.
+	
+	(1) homomorphism: $exp(a*b) = exp(a)*exp(b)$
+	
+	$e^{a+b} = e^a \times e^b$
+	
+	(2) bijection: We know that the exponential function is well defined. For every member of $G$, there is a corresponding member in $G'$ which means $exp$ is injective. Furthermore, $exp$ is surjective because the exponential function is strictly increasing and $\forall b \in G', \exists a \in G \text{ such that } log(b) = a$. Therefore, $exp$ is bijective between these to groups.
+	
+		Hence $exp : (\field{R}, +) \cong ((0, \infty), *)$.
+\end{proof}	
+\end{ques}
+
+\begin{ques}
+	Exercise 1 page 19: 29, 30 
+\begin{enumerate}[(a)]
+	\item 
+	Problem 29: Find all solutions x of the given equation: $x +_{15} 7 = 3$ in ${\field{Z}_{15}}$
+	\begin{proof}
+		We define ${\field{Z}_{15}} : \{0, 1, 2, \dots, 14\}$ and let $x \in {\field{Z}_{15}}$. It is easy to see that any $x \in \{0, 1, \dots, 8\}$ is not a solution. This is because any $x$ in such a range applied to this binary operation ($+_7$ mod 15) will result in an integer that is between $7$ and $15$.  So we have to examine $x \in \{9, 10, \dots, 14\}$. Solutions of this equation are $x \in \{11\}$.
+	\end{proof}
+	
+	\item 
+	Problem 30: Find all solutions x of the given equation: $x +_{2\pi} {\frac{3\pi}{2}} = \frac{3\pi}{4}$ in ${\field{R}_{2\pi}}$
+	\begin{proof}
+	We define ${\field{R}_{2\pi}} : \{0 \dots 2\pi\}$ and let $x \in {\field{R}_{2\pi}}$. We see that any $x \in \{0 \dots \frac{\pi}{2}\}$ is not a solution. This is because any $x$ in such a range applied to this binary operation ($+_{2\pi}$ mod $\frac{3\pi}{2}$) will result in an integer that is between $\frac{3\pi}{2}$ and $2\pi$.  So we have to examine $x \in \{\frac{\pi}{2} \dots 2\pi\}$. Solutions of this equation are $x \in \{\frac{5\pi}{4}\}$.
+	\end{proof}
+\end{enumerate}
+\end{ques}
+
+\end{document} 

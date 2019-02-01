@@ -1,0 +1,265 @@
+\documentclass{article}
+\usepackage{amsthm, amssymb, amsmath,verbatim}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{graphicx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand*{\field}[1]{\mathbb{#1}}%
+
+
+
+\newtheorem*{claim}{Claim}
+\newtheorem{ques}{Question}
+
+
+\title{Math 103A Homework 2}
+\date{Winter 2019}
+\author{James Holden}
+
+\begin{document}
+
+\maketitle
+
+\begin{ques}
+	Let $X$ be a non-empty set. Let $S_A = \{f : X \rightarrow X|f \text{ is a bijection}\}$. Show that $S_A$ together with composition of functions forms a group. 	
+	\begin{proof}
+	We want to show that $(S_A, \circ)$ is a group. Since $f$ is bijective, we know that $f(a) = f(b)$ implies $a=b$ for all $a,b \in X$. To do so we verify the group properties:
+	
+	1. identity element: 
+	
+	$\indent$ The identity element is the identity function $id: X \rightarrow X$ given $x \in X$. Then we have $(f \circ id)(t) = f(id(t)) = f(t) = id(f(t)) = (id \circ f) (t)$
+	
+	2. closed under group operation: for all $a,b \in X \rightarrow a \circ b \in X$
+	
+	$\indent$ $a \circ b \in X$
+	
+	3. inverses exist for ever element in the group: for ever $a \in X, \exists a^{-1} \in X \text{ such that } a \circ a^{-1} = e$
+	
+	$\indent$ By the definition of $f$, every element in X must have a inverse because there exists a bijective mapping $f:X \rightarrow X$.
+	
+	4. all elements are associative: for $a,b,c \in X$ the relation $a \circ (b \circ c) = (a \circ b) \circ c$ holds by associativity of composition of sets $X \rightarrow X$.
+	
+	
+	\end{proof}
+\end{ques}
+
+\begin{ques}
+	Let $G = P({1, 2})$, the power set of $\{1, 2\}$. For any two sets $A, B \in G$ define $A * B = A \Delta B$. It was discussed in class that $(G, *)$ is a group. List all the subgroups of $G$.
+	\begin{proof}
+		We define $G = (\{\{\}, \{1\}, \{2\}, \{1, 2\}\}, *)$. A subgroup of $G$ is a subset of $G$ that retains the group operation. It is clear that $(G, *)$ is a group.
+		
+		Listing them out: 
+		
+		$\{\{\}\}$
+		
+		$\{\{\}, \{1\}\}$
+		
+		$\{\{\}, \{2\}\}$
+		
+		$\{\{\}, \{1, 2\}\}$
+		
+		$\{\{\}, \{1, 2\}, \{1, 2, 3\}\}$
+		
+		are all subgroups.
+		
+		$\{\{\}, \{1\}, \{1,2\}\}$
+		
+		$\{\{\}, \{2\}, \{1,2\}\}$
+		
+		are not subgroups because they are not closed under multiplication.
+		
+	\end{proof}
+\end{ques}
+
+
+\begin{ques}
+	Let $(G, *)$ be as in problem 2 (above). Show that $(G, *)$ is not isomorphic to $(Z_4, +_4)$. (Hint: suppose there exists an isomorphic from $G$ onto $Z_4$, can	the element $1 \in Z_4$ be in the image?)	
+	\begin{proof}
+		We define $G = (\{\{\}, \{1\}, \{2\}, \{1, 2\}\}, *)$ and $\field{Z}_4 = \{0, 1, 2, 3\}$. Let $f: G \rightarrow \field{Z}_4$. We want to show that $f$ is not an isomorphism. According to the hint, $1 \in \field{Z}_4$ is not in the image. This means that there does not exist $a \in G \text{ such that } f(a) = 1$.
+		
+		Let $f : (G, *) \rightarrow (Z_4, +_4)$ be an isomorphism. Let $f$ be the sum of the elements of the pairs of the power set, so :
+		
+		$\{\} \in G \rightarrow 0 \in Z_4$
+		
+		$\{1\} \in G \rightarrow 1 \in Z_4$
+	
+		$\{2\} \in G \rightarrow 2 \in Z_4$
+		
+		$\{1, 2\} \in G \rightarrow 3 \in Z_4$
+
+		To me it seems like $1 \in Z_4 \in \text{ Image(f)}$ because $f({1}) = 1 \in Z_4$
+
+	\end{proof}
+\end{ques}
+
+
+\begin{ques}
+	 Let $(G, *)$ be a group and let $H$ be a subgroup of $G$. Define the relation $g_1 \sim g_2 \Leftrightarrow {g_1}^{-1} * g_2 \in H$.
+\begin{enumerate}[(a)]
+\item 
+Show that $\sim$ is an equivalence relation.
+\begin{proof}
+	$\sim$ is an equivalence relation if it 
+	
+	(1) is reflexive $a \sim a$ 
+		
+		$\indent$ Check: For any $g \in G$, we have $g^{-1} * g = e \in H$ because $H$ is a subgroup of $G$, hence $g \sim g$. 
+	
+	(2) is symmetric $a \sim b \text{ then } b\sim a$
+		
+		$\indent$ Check: If $g_1 \sim g_2$ then $g_1^{-1} * g_2 \in H$. Since $H$ is a subgroup, it is closed under inverses just like G. Therefore we have: 
+		
+		$g_1^{-1} * g_2 = (g_2^{-1} * g_1)^{-1} \in H$ and hence $g_2 \sim g_1$ 
+	
+	(3) is transitive $a \sim b, b \sim c \rightarrow a \sim c$
+	
+		$\indent$ Check: If $g_1 \sim g_2$ and $g_2 \sim g_3$ then $g_2^{-1} * g_1 \in H$ and $g_3^{-1} * g_2 \in H$. 
+		
+		$\indent$ Since $H$ is closed under multiplication, $g_3^{-1} * g_1 = (g_3^{-1} * g_2)(g_2^{-1} * g_1) \in H$ therefore $g_1 \sim g_3$
+\end{proof}
+
+\item 
+Find the class of $e$, the identity element.
+\begin{proof}
+	The class of $e$ is just the subgroup $H$ itself. Let $b\in (\text{equivalence class of } e)$. Let $a$ be the equivalence class of $e$.
+	
+	$b \sim e$
+	$\Leftrightarrow b \sim a$
+	
+	$\indent \Leftrightarrow b^{-1} * a  \in H$
+	 
+	$\indent \Leftrightarrow b^{-1} * a = h, \text{ for some } h \in H$
+	
+	$\indent \Leftrightarrow b = ah^{-1}, \text{ for some } h \in H$
+
+	$\indent \Leftrightarrow b = ah, \text{ for some } h \in H$ because $H$ is closed under inverses.
+	
+	$\indent \Leftrightarrow b \in eH$
+	
+	$\indent \Leftrightarrow b \in H$
+\end{proof}
+
+\end{enumerate}
+\end{ques}
+
+\begin{ques}
+	 
+	 Let $a$ be a positive real number. Note that for all $x, y \in R$ there exists a unique $k \in Z$ and a unique $0 \leq r \le a$ so that:
+	 
+	 $x + y = r + ka$.
+	 
+	 Denote $[0, a)$, the half open interval, by $\field{R}_a$ and define the following “addition” on $\field{R}_a$. 
+	 
+	 $x +a y = r$,
+	 
+	 where $x + y = r + ka$ and $r \in [0, a)$.
+	\begin{enumerate}[(a)]
+		\item 
+		Show that $(\field{R}_a, +_a)$ is a group.
+		\begin{proof}
+			Given $(\field{R}_a, +_a)$ with addition $x +a y = r$, this is the group of positive real numbers including zero up to but not including $a$, under the specified addition. 
+			
+			Let $g, k \in \field{R}_a$. 
+			
+			(1) identity: $e = 0$
+			
+			$\indent$ For $t \in \field{R}_a$, $t * e = x + e \times y = t$
+			
+			(2) closed under operation 
+			
+			$\indent$ For $s, t \in \field{R}_a$, $t * s = x + (x + s y) y = 2x + xy + sy^2 = r \in (\field{R}_a, +_a)$
+			
+			(3) inverse
+			
+			$\indent$ For $a \in (\field{R}_a, +_a), a^{-1} \in (\field{R}_a, +_a)$ exists.
+			
+			(4) associativity
+			
+			$\indent$ For $a, b, c \in (\field{R}_a, +_a)$, $a * (b * c) = (a * b) * c$ 
+			
+		\end{proof}
+		
+		\item 
+		Show that $(R_1, +_1)$ is isomorphic to $(R_a, +_a)$ for any $a > 0$. (Therefore, $(R_a, +_a)$ and $(R_b, +_b)$ are isomorphic for any $a, b > 0$).
+		\begin{proof}
+			Let $f: (R_1, +_1) \rightarrow (R_a, +_a)$. Let $f$ be the tangent function. The tangent function bijectively maps the real numbers $[0, 1) \rightarrow (\infty, \infty)$. Therefore, $f$ is an isomorphism and $(R_1, +_1) \cong
+			(R_a, +_a)$.
+			
+		\end{proof}
+	
+		\item 
+		(Bonus Problem) Prove or disprove: $(R_1, +_1)$ is isomorphic to $(R, +)$.
+		\begin{proof}
+			$(R_1, +_1)$ cannot be isomorphic to the whole set of real numbers because of the tangent function. The tangent function is well-defined for all real numbers on the domain (-1, 1). Let $f: (R_1, +_1) \rightarrow  (R, +)$. $f$ is an injective homomorphism.
+			
+		\end{proof}
+		
+	\end{enumerate}
+\end{ques}
+
+\begin{ques} 
+	Exercise 4 page 45: 3, 12, 19	
+	\begin{proof}
+		\begin{enumerate}[(a)]
+			
+			\item 
+			Problem 3: Let $*$ be defined on $\field{R^+}$ by letting $a*b = \sqrt{ab}$.
+			\begin{proof}
+				(1)  identity: 
+				
+				$a * e = \sqrt{a \times e} = \sqrt{a} \neq a$ for $a \in \field{R}^+$
+				
+				Therefore this fails the identity axiom. 
+			\end{proof}
+			
+			\item 
+			Problem 12: All $n \times x$ diagonal matricies.
+
+			\begin{proof}		
+				Let such a matrix be $A$.
+				
+				We know $\det(A) \neq 0$ because for diagonal matrices, $det(A) = \prod_{i = 1}^{n} a_{ii}$ and we know the diagonal elements are nonzero. Therefore, inverses exists for all such matrices $A$.
+				
+				This set of matrices is also closed under matrix multiplication because for diagonal matrix A and diagonal matrix B, $\prod_{i = 1}^{n} a_{i}b_{i}$.
+				
+				It also inherits the properties of the group of all invertible $n \times n$ matrices, called the general linear group.
+			\end{proof}
+			
+			\item 
+			Problem 19 Let $S = \field{R}$ without $\{-1\}$. * on S is
+			
+			$a * b = a + b + ab$
+			
+			
+			\begin{proof}
+				
+				* is a binary operation on S. This is because *: $S \times S \rightarrow S$.
+				
+				$(S, *)$  is a group. This is because it is closed on group operation (ie. $a * b \in S$), identity exists (ie. $e = 0$), it is associative, and inverses exist (for every $a$ there exists an $a^-1$).
+				
+				$2 * x * 3 = 7 \in S$
+				
+				
+				$= (2 + x  + 2x) * 3 = 7 \in S$
+				
+				$= (2 + x  + 2x) + 3 + 3 \times (2 + x  + 2x) = 7 \in S$
+				
+				$= 2 + 3x + 3 + 6 + 3x + 6x = 7 \in S$
+				
+				$= 11 + 12x =  7 \in S$
+				
+				$x = -\frac{1}{3}$, $x \in S$
+				
+			\end{proof}
+			
+		\end{enumerate}
+	\end{proof}
+\end{ques}
+
+
+\end{document} 

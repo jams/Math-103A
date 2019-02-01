@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage{amsthm, amssymb, amsmath,verbatim}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{graphicx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand*{\field}[1]{\mathbb{#1}}%
+
+
+
+\newtheorem*{claim}{Claim}
+\newtheorem{ques}{Question}
+
+
+\title{Math 103A Homework 3}
+\date{\today $ $, Winter 2019}
+\author{James Holden}
+
+\begin{document}
+
+\maketitle
+
+\begin{ques}
+	Find all subgroups of $(Z_8, +_8)$.	
+	\begin{proof}
+		$Z_8 = \{0, 1, 2, 3, 4, 5, 6, 7\}$
+		
+	Let $G$ be a group. Let $H$ be a subgroup of $G$. Lagrange theorem states that the order of subgroups of $G$ divide the order of $G$. The subgroups of $G$ are as follows:
+	
+	$H_1 = \{\{0, 1, 2, 3, 4, 5, 6, 7\}, +_8\}$
+
+	$H_2 = \{\{0, 2, 4, 6,\}, +_8\}$
+
+	$H_4 = \{\{0, 4\}, +_8\}$
+
+	$H_\emptyset = \{\{\emptyset\}, +_8\}$
+
+	\end{proof}
+\end{ques}
+
+\begin{ques}
+		Let $G$ be a group and let $g \in G$; assume that $ord(g) = n$. Show that $g^{-1} = g^{n-1}$.
+	\begin{proof}
+		Let $g \in G$. We know since $ord(g) = n$, $G$ has a finite number of elements. This means that there exists $n \in \field{Z}^+$ such that $g^n = e$. 
+		\begin{align*}
+		g^n &= e \\
+		g^{n - 1 + 1} &=e \\
+		g^{n - 1} g^1 &= e \\
+		g^{n-1} &= eg^{-1} \\
+		g^{n-1} &= g^{-1} \\
+		\end{align*}
+		
+	The statement is proven.
+	\end{proof}
+\end{ques}
+
+\begin{ques}
+	\begin{enumerate}[(a)]
+		\item 
+		Find the order of all the elements in $(\field{Z}_7, +_7)$.
+		\begin{proof}
+			$Z_7 = \{0, 1, 2, 3, 4, 5, 6\}$
+			
+			W know for $a \in G$, $ord_G(a) = min\{n : a^n = e\}$. That is to say, the order of each element is the minimum number of times to apply the group operation to that element to get back to $e$.
+			
+			For $a = 1$,  $ord_G(a) \geq 1$
+			
+			For $a = 2$,  $ord_G(a) = 7$
+			
+			For $a = 3$,  $ord_G(a) = 7$
+			
+			For $a = 4$,  $ord_G(a) = 7$
+			
+			For $a = 5$,  $ord_G(a) = 7$
+			
+			For $a = 6$,  $ord_G(a) = 7$
+			
+			
+			This arises because $7$ is prime. 
+			
+		\end{proof}
+	
+		\item 
+		Let $p$ be a prime number. Find the order of all the elements in $(\field{Z}_p, +_p)$.
+		(Hint: recall from Math 109 that if $g.c.d.(a, n) = 1$, then we have the
+		following: $a|mn$ for some $m \in Z$ if and only if $a|m$.)
+		\begin{proof}
+			Since there is no integer in $2 \dots p$ which is coprime with $p$, the order of all the elements in $\field{Z}_p$ is p.
+		\end{proof}
+	\end{enumerate}	
+\end{ques}
+
+\begin{ques}
+	Let $p$ be a prime number. Find all the subgroups of $(\field{Z}_p, +_p)$. (Hint: use
+	problem 3(b) above.)
+	\begin{proof}
+		Using Lagrange's Theorem, the only subgroups of a prime-sized cyclic group are $\{\emptyset\}$ and $\{0, 1,, \dots, p\}$, the group itself.
+	\end{proof}
+\end{ques}
+
+\begin{ques}
+	Exercise 4 page 45: 30, 32, 35, 36.
+	\begin{enumerate}[(a)]
+		\item 
+		$\emph{Question 30:}$ Let $\field{R}^*$ be the set of all real numbers except $0$. Define $*$ on $\field{R}^*$ by letting $a * b = \mid a\mid b$.
+		\begin{enumerate}[(a)]
+			\item 
+			Show that $*$ gives an associative binary operation on $\field{R}^*$
+			\begin{proof}
+				Let $a,b,c \in \field{R}^*$. Associative property states: 
+				
+				$(a * b) * c = a * (b * c)$
+				
+				\begin{align*} 
+				LHS &= (\mid a\mid * b) *c \\
+				&= (\mid \mid a\mid b\mid) c \\
+				&= (\mid ab \mid) c
+				\end{align*}
+				
+				\begin{align*} 
+				RHS &= a * (\mid b\mid * c) \\
+				&= \mid a\mid \mid b\mid c \\
+				&= (\mid ab \mid) c \\
+				\end{align*}
+				
+				 We note that $\mid ab\mid = \mid a\mid \mid b\mid$ which is easily verifiable by testing cases. Since the right hand side(RHS) of the associative rquation equals the left hand side(LHS) of the associative equation, the operator $*$ gives an associative binary property.
+			\end{proof}
+		
+			\item
+			Show there is a left identity for * and a right inverse for each element in $\field{R}^*$
+			\begin{proof}
+				Let $b \in \field{R}^*$.
+				
+				Left Identity: $e * b = \mid e\mid b = eb = b$
+				
+				Right Inverse: $b * b^{-1} = \mid b\mid b^{-1} = bb^{-1} = e$
+			\end{proof}
+		
+			\item
+			Is $\field{R}^*$ with this binary operation a group?
+			\begin{proof}
+			We have shown that $(\field{R}^*, *)$ is associative and an identity and inverse element exists within the group for every member of the group. We also know it is closed under group operation. Therefore it is a group.
+			\end{proof}
+	
+			\item
+			Explain the significance of this exercise.
+			\begin{proof}
+			To check if a binary operation paired with a set is a group you simply carry out the above steps/checks.
+			\end{proof}
+
+		\end{enumerate}
+		
+		
+		\item 
+		$\emph{Question 32:}$ Show that every group $G$ with identity $e$ and such that $x*x = e$ for all $x \in G$ is abelian.
+		\begin{proof}
+			Let $a, b \in G$. Since, $G$ is a group, we know $(a * b), (b * a) \in G$. 
+			
+			Let $x = (a * b)$. Then $e = x * x = (a * b) * (a * b)$.
+			
+			\begin{align*} 
+			e &= (a * b) * (a * b) \\
+			e * (b * a) &= (a * b) * (a * b) * (b * a) \\ 
+			(b * a) &= a * b * a * (b * b) * a \text{ [by associativity]} \\
+			(b * a) &= a * b * a * e * a \\
+			(b * a) &= a * b * (a * a) \\
+			(b * a) &= a * b * e \\
+			b * a &= a * b \\
+			\end{align*}
+			
+			which is the definition of an abelian group.
+		\end{proof}
+		
+		\item 
+		$\emph{Question 35:}$ Show that if $(a * b)^2 = a^2 * b^2$ for $a,b \in G$, then $a *b = b * a$.
+		\begin{proof}
+			We seek to prove that if $(ab)^2 = a^2b^2$, $G$ is abelian.
+			
+			\begin{align*} 
+			(ab)^2 &= a^2b^2 \\
+			(ab)(ab) &= a^2b^2 \\ 
+			abab &= a^2b^2 \\
+			a^{-1}(abab)b^{-1} &= a^{-1}a^2b^2b^{-1} \\
+			ebae &= eabe \\
+			ba &= ab \\
+			\end{align*}
+			
+			Thus, G is abelian.
+			
+		\end{proof}
+	
+		\item 
+		$\emph{Question 36:}$ Let $G$ be a group and let $a,b \in G$. Show that (a * b)' = a' * b' $\iff$ $ a * b = b * a$. ' is left inverse.
+		
+		\begin{proof}
+			Again we want to show $G$  is abelian.
+			
+			\begin{align*} 
+			ab &= ((ab)^{-1})^{-1} \\
+			&= (a^{-1}b^{-1})^{-1} \\
+			&= (b^{-1})^{-1}(a^{-1})^{-1} \\
+			&= ba
+			\end{align*}
+	
+			Thus, $G$ is abelian.
+	
+		\end{proof}
+	\end{enumerate}
+\end{ques}
+
+
+
+\end{document} 
